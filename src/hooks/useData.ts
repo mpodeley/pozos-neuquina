@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import type { Activity, Cohort, Envelope, FetchState, WellRow, WellSeries } from '../types'
+import type {
+  Activity, BlockRow, Cohort, ConcesionesCollection, Envelope, FetchState, WellRow, WellSeries,
+} from '../types'
 
 /**
  * Loads a JSON file from ./data/ and unwraps the {generated_at, data} envelope
@@ -58,3 +60,19 @@ export const useWells = () => useJson<WellRow[]>('./data/wells.json')
 export const useWellSeries = () => useJson<{ wells: WellSeries[] }>('./data/well_series.json')
 export const useTypeWells = () => useJson<{ cohorts: Cohort[] }>('./data/type_wells.json')
 export const useActivity = () => useJson<Activity>('./data/activity.json')
+export const useBlocks = () => useJson<BlockRow[]>('./data/blocks.json')
+
+/** Concesiones GeoJSON: a plain FeatureCollection (no pipeline envelope), so
+ *  fetch it directly rather than through useJson. */
+export function useConcesiones() {
+  const [state, setState] = useState<{ data: ConcesionesCollection | null; loading: boolean; error: Error | null }>({
+    data: null, loading: true, error: null,
+  })
+  useEffect(() => {
+    fetch('./data/concesiones_neuquina.geojson', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((d: ConcesionesCollection) => setState({ data: d, loading: false, error: null }))
+      .catch((e: Error) => setState({ data: null, loading: false, error: e }))
+  }, [])
+  return state
+}

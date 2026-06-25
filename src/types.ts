@@ -125,3 +125,40 @@ export interface Activity {
   by_year_empresa: ActivityYear[]
   operadores: string[]
 }
+
+export interface BlockRow {
+  bloque: string
+  operador: string
+  formacion: string
+  ventana: string
+  n_wells: number
+  n_vm: number
+  n_gas: number
+  n_oil: number
+  vintage_min: number
+  vintage_max: number
+  rama_mediana: number | null
+  eur_gas_total: number
+  eur_oil_total: number
+  cum_gas: number
+  cum_oil: number
+  eur_gas_km_med: number | null
+  eur_oil_km_med: number | null
+}
+
+export interface ConcesionFeature {
+  type: 'Feature'
+  properties: {
+    id: string
+    nombre: string
+    operador: string
+    interesados?: string
+    participacion?: string
+    comentario?: string
+  }
+  geometry: { type: 'MultiPolygon'; coordinates: number[][][][] }
+}
+export interface ConcesionesCollection {
+  type: 'FeatureCollection'
+  features: ConcesionFeature[]
+}

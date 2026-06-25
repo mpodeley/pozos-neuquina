@@ -6,15 +6,17 @@ import Resumen from './components/Resumen'
 import Declinacion from './components/Declinacion'
 import PozoTipo from './components/PozoTipo'
 import Analisis from './components/Analisis'
+import Mapa from './components/Mapa'
 import PozosTabla from './components/PozosTabla'
 
-type Tab = 'resumen' | 'declinacion' | 'tipo' | 'analisis' | 'pozos'
+type Tab = 'resumen' | 'declinacion' | 'tipo' | 'analisis' | 'mapa' | 'pozos'
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'resumen', label: 'Resumen' },
   { id: 'declinacion', label: 'Declinación' },
   { id: 'tipo', label: 'Pozos tipo' },
   { id: 'analisis', label: 'Análisis' },
+  { id: 'mapa', label: 'Mapa' },
   { id: 'pozos', label: 'Pozos' },
 ]
 
@@ -67,6 +69,7 @@ export default function App() {
         {tab === 'declinacion' && <Declinacion />}
         {tab === 'tipo' && <PozoTipo />}
         {tab === 'analisis' && <Analisis />}
+        {tab === 'mapa' && <Mapa />}
         {tab === 'pozos' && <PozosTabla />}
       </main>
 

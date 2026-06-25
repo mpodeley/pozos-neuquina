@@ -28,7 +28,7 @@ DATA_DIR = os.path.join(SCRIPT_DIR, '..', 'public', 'data')
 PY = sys.executable
 
 REQUIRED = ['fractura.json', 'well_series.json', 'wells.json',
-            'type_wells.json', 'activity.json']
+            'type_wells.json', 'activity.json', 'blocks.json']
 
 
 def run(script, *args, timeout=1200):
@@ -74,6 +74,7 @@ def main():
         steps_ok &= run('fetch_capiv_pozos.py')
     steps_ok &= run('build_wells.py')
     steps_ok &= run('build_type_wells.py')
+    steps_ok &= run('build_blocks.py')
 
     print('\n=== validation ===')
     valid = validate()

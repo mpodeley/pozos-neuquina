@@ -74,6 +74,22 @@ export const badge = (color: string): React.CSSProperties => ({
   fontWeight: 700,
 })
 
+// Square icon button used by the map zoom controls (＋ － ⟲).
+export const iconBtn: React.CSSProperties = {
+  background: colors.surface,
+  color: colors.textPrimary,
+  border: `1px solid ${colors.border}`,
+  borderRadius: radius.sm,
+  width: 28,
+  height: 28,
+  cursor: 'pointer',
+  fontSize: 14,
+  fontWeight: 700,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
+
 export const selectStyle: React.CSSProperties = {
   background: colors.surfaceAlt,
   color: colors.textPrimary,
