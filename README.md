@@ -17,6 +17,7 @@ públicos de la Secretaría de Energía. Sitio estático publicado en GitHub Pag
 - Construye **pozos tipo** P10/P50/P90 por cohorte (formación, añada, operador, ventana),
   en absoluto y **normalizados por 1000 m de rama**.
 - Clasifica la **ventana de fluido** por GOR (petróleo / volátil / gas húmedo / gas seco).
+- **Mapa coroplético** de concesiones coloreado por EUR (total) y EUR/1000m de rama, gas y petróleo.
 
 > EUR y pozos tipo son estimaciones con fines analíticos, **no** certificaciones de reservas.
 > Los EUR individuales de pozos con poca historia son de baja confianza; los **pozos tipo**
@@ -70,6 +71,7 @@ npm run build        # tsc + vite build -> dist/
 | `fetch_fractura_adjiv.py` | `public/data/fractura.json` |
 | `build_wells.py` | `public/data/wells.json` (features + ventana GOR + Arps + EUR + IP) |
 | `build_type_wells.py` | `public/data/type_wells.json`, `public/data/activity.json` |
+| `build_blocks.py` | `public/data/blocks.json` (agregado por bloque para el mapa) |
 | `arps.py` | matemática de declinación (importable) |
 | `build_data.py` | orquestador + validación |
 
