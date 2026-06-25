@@ -1,0 +1,70 @@
+name: Build data and deploy
+
+on:
+  schedule:
+    # Día 6 de cada mes, 11:00 UTC (Cap IV publica el mes anterior con rezago).
+    - cron: '0 11 6 * *'
+  workflow_dispatch: # disparo manual
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: build-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run data pipeline (delta fetch + analytics)
+        # Delta: descarga sólo el año corriente + anterior y hace upsert sobre el
+        # store persistente (scripts/capiv_raw.json.gz), luego recalcula la analítica.
+        timeout-minutes: 20
+        run: python scripts/build_data.py
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Build site
+        run: npm run build
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/ scripts/capiv_raw.json.gz scripts/.capiv_pozos_cache.json || true
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+          else
+            git commit -m "Auto-update data $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main || git rebase --abort
+            git push
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

@@ -1,0 +1,20 @@
+# Node
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Raw / large downloads are streamed, never persisted — but ignore just in case
+raw/
+*.csv.gz
+
+# Editor / OS
+.DS_Store
+~$*
+.vscode/
+
+# Keep public/data/*.json committed (frontend reads them, CI upserts them).
+# Keep scripts/.*_cache.json committed so CI can skip unchanged yearly CSVs.
