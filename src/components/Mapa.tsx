@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { useBlocks, useConcesiones } from '../hooks/useData'
 import { useMapPanZoom } from '../hooks/useMapPanZoom'
 import { colors, iconBtn, radius, space } from '../theme'
 import { fmt, fmtInt, operatorColor, shortEmpresa, titleCase, ventanaColor } from '../utils/format'
+import { stageColor } from '../utils/play'
 import { ErrorMsg, Loading, Panel } from './ui'
 import type { BlockRow, ConcesionFeature } from '../types'
 
@@ -18,25 +19,41 @@ function toMercator(lat: number, lon: number) {
 const GAS_PALETTE = ['#450a0a', '#7f1d1d', '#991b1b', '#b91c1c', '#dc2626', '#ef4444', '#f87171']
 const OIL_PALETTE = ['#052e16', '#14532d', '#166534', '#15803d', '#16a34a', '#22c55e', '#4ade80']
 const POZOS_PALETTE = ['#172554', '#1e3a8a', '#1d4ed8', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd']
+const AMBER_PALETTE = ['#451a03', '#7c2d12', '#9a3412', '#c2410c', '#ea580c', '#f59e0b', '#fcd34d']
+const PURPLE_PALETTE = ['#2e1065', '#4c1d95', '#5b21b6', '#6d28d9', '#7c3aed', '#8b5cf6', '#a78bfa']
 const NO_DATA = '#1e293b'
 
-type Mode = 'eur_gas' | 'eur_gas_km' | 'eur_oil' | 'eur_oil_km' | 'pozos'
+type Mode =
+  | 'eur_gas' | 'eur_gas_km' | 'eur_oil' | 'eur_oil_km' | 'pozos'
+  | 'rf_gas' | 'rf_oil' | 'depletion' | 'pct_dev' | 'maturity'
 
-const MODES: { id: Mode; label: string; unit: string; palette: string[] }[] = [
-  { id: 'eur_gas', label: 'EUR gas (total)', unit: 'MMm³', palette: GAS_PALETTE },
-  { id: 'eur_gas_km', label: 'EUR gas / 1000m', unit: 'MMm³/1000m', palette: GAS_PALETTE },
-  { id: 'eur_oil', label: 'EUR petróleo (total)', unit: 'Mm³', palette: OIL_PALETTE },
-  { id: 'eur_oil_km', label: 'EUR petróleo / 1000m', unit: 'Mm³/1000m', palette: OIL_PALETTE },
-  { id: 'pozos', label: 'Pozos', unit: 'pozos', palette: POZOS_PALETTE },
+const MODES: { id: Mode; label: string; unit: string; palette: string[]; group: string }[] = [
+  { id: 'eur_gas', label: 'EUR gas (total)', unit: 'MMm³', palette: GAS_PALETTE, group: 'EUR' },
+  { id: 'eur_gas_km', label: 'EUR gas / 1000m', unit: 'MMm³/1000m', palette: GAS_PALETTE, group: 'EUR' },
+  { id: 'eur_oil', label: 'EUR petróleo (total)', unit: 'Mm³', palette: OIL_PALETTE, group: 'EUR' },
+  { id: 'eur_oil_km', label: 'EUR petróleo / 1000m', unit: 'Mm³/1000m', palette: OIL_PALETTE, group: 'EUR' },
+  { id: 'pozos', label: 'Pozos', unit: 'pozos', palette: POZOS_PALETTE, group: 'EUR' },
+  { id: 'rf_gas', label: 'RF gas (hoy)', unit: '%', palette: GAS_PALETTE, group: 'Madurez' },
+  { id: 'rf_oil', label: 'RF petróleo (hoy)', unit: '%', palette: OIL_PALETTE, group: 'Madurez' },
+  { id: 'depletion', label: '% agotado', unit: '%', palette: AMBER_PALETTE, group: 'Madurez' },
+  { id: 'pct_dev', label: '% desarrollado', unit: '%', palette: POZOS_PALETTE, group: 'Madurez' },
+  { id: 'maturity', label: 'Índice de madurez', unit: '0-100', palette: PURPLE_PALETTE, group: 'Madurez' },
 ]
 
 function valueForMode(b: BlockRow | undefined, mode: Mode): number {
   if (!b) return 0
-  if (mode === 'eur_gas') return b.eur_gas_total
-  if (mode === 'eur_gas_km') return b.eur_gas_km_med ?? 0
-  if (mode === 'eur_oil') return b.eur_oil_total
-  if (mode === 'eur_oil_km') return b.eur_oil_km_med ?? 0
-  return b.n_wells
+  switch (mode) {
+    case 'eur_gas': return b.eur_gas_total
+    case 'eur_gas_km': return b.eur_gas_km_med ?? 0
+    case 'eur_oil': return b.eur_oil_total
+    case 'eur_oil_km': return b.eur_oil_km_med ?? 0
+    case 'pozos': return b.n_wells
+    case 'rf_gas': return (b.rf_gas_hoy ?? 0) * 100
+    case 'rf_oil': return (b.rf_oil_hoy ?? 0) * 100
+    case 'depletion': return b.depletion_boe * 100
+    case 'pct_dev': return (b.pct_developed ?? 0) * 100
+    case 'maturity': return b.maturity_index ?? 0
+  }
 }
 
 export default function Mapa() {
@@ -112,8 +129,13 @@ export default function Mapa() {
         </div>
         <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
           <span style={{ color: colors.textDim, fontSize: 12, marginRight: 4 }}>colorear por:</span>
-          {MODES.map((m) => (
-            <button key={m.id} onClick={() => setMode(m.id)} style={modeBtn(mode === m.id)}>{m.label}</button>
+          {MODES.map((m, i) => (
+            <Fragment key={m.id}>
+              {i > 0 && MODES[i - 1].group !== m.group && (
+                <span style={{ width: 1, height: 18, background: colors.border, margin: '0 4px' }} />
+              )}
+              <button onClick={() => setMode(m.id)} style={modeBtn(mode === m.id)}>{m.label}</button>
+            </Fragment>
           ))}
         </div>
       </div>
@@ -188,14 +210,21 @@ function Tooltip({ feature, block }: { feature: ConcesionFeature; block: BlockRo
       <div style={{ color: operatorColor(op), fontSize: 12, marginTop: 2 }}>{shortEmpresa(op)}</div>
       {block ? (
         <div style={{ marginTop: space.sm, lineHeight: 1.7 }}>
+          {block.maturity_index != null && (
+            <div style={{ marginBottom: 4 }}>
+              <span style={{ background: stageColor(block.stage) + '22', color: stageColor(block.stage), padding: '2px 8px', borderRadius: 12, fontSize: 11, fontWeight: 700 }}>
+                {block.stage} · índice {fmt(block.maturity_index, 0)}
+              </span>
+            </div>
+          )}
           <Row k="Pozos no-conv" v={`${fmtInt(block.n_wells)}${block.n_vm ? ` · ${fmtInt(block.n_vm)} VM` : ''}`} />
           <Row k="Añadas" v={block.vintage_min === block.vintage_max ? `${block.vintage_min}` : `${block.vintage_min}–${block.vintage_max}`} />
-          <Row k="Rama mediana" v={block.rama_mediana ? `${fmtInt(block.rama_mediana)} m` : '—'} />
+          <Row k="% desarr. / agotado" v={`${block.pct_developed != null ? (block.pct_developed * 100).toFixed(0) : '—'}% / ${(block.depletion_boe * 100).toFixed(0)}%`} />
+          <Row k="RF gas / oil (hoy)" v={`${block.rf_gas_hoy != null ? (block.rf_gas_hoy * 100).toFixed(1) : '—'}% / ${block.rf_oil_hoy != null ? (block.rf_oil_hoy * 100).toFixed(1) : '—'}%`} />
           <div style={{ borderTop: `1px solid ${colors.border}`, margin: '5px 0' }} />
           <Row k="EUR gas total" v={`${fmtInt(block.eur_gas_total)} MMm³`} color={colors.gas} />
-          <Row k="EUR gas /1000m" v={block.eur_gas_km_med != null ? `${fmt(block.eur_gas_km_med, 1)} MMm³` : '—'} color={colors.gas} />
           <Row k="EUR petróleo total" v={`${fmtInt(block.eur_oil_total)} Mm³`} color={colors.oil} />
-          <Row k="EUR petróleo /1000m" v={block.eur_oil_km_med != null ? `${fmt(block.eur_oil_km_med, 1)} Mm³` : '—'} color={colors.oil} />
+          <Row k="EUR/km² (gas)" v={block.eur_gas_km2 != null ? `${fmtInt(block.eur_gas_km2)} MMm³` : '—'} color={colors.gas} />
           <div style={{ color: ventanaColor(block.ventana), fontSize: 11, marginTop: 4 }}>{block.ventana}</div>
         </div>
       ) : (

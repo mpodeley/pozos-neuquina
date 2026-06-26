@@ -137,6 +137,9 @@ export interface BlockRow {
   n_oil: number
   vintage_min: number
   vintage_max: number
+  pozos_ult3a: number
+  share_ult3a: number
+  anios_activo: number
   rama_mediana: number | null
   eur_gas_total: number
   eur_oil_total: number
@@ -144,6 +147,21 @@ export interface BlockRow {
   cum_oil: number
   eur_gas_km_med: number | null
   eur_oil_km_med: number | null
+  // maturity / recovery-factor (null when the block has no concession geometry)
+  area_km2: number | null
+  well_density: number | null
+  pct_developed: number | null
+  eur_gas_km2: number | null
+  eur_oil_km2: number | null
+  depletion_gas: number
+  depletion_oil: number
+  depletion_boe: number
+  rf_gas_hoy: number | null
+  rf_oil_hoy: number | null
+  rf_gas_vs_ult: number | null
+  rf_oil_vs_ult: number | null
+  maturity_index: number | null
+  stage: string
 }
 
 export interface ConcesionFeature {

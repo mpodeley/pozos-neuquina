@@ -7,9 +7,11 @@ import Declinacion from './components/Declinacion'
 import PozoTipo from './components/PozoTipo'
 import Analisis from './components/Analisis'
 import Mapa from './components/Mapa'
+import Madurez from './components/Madurez'
+import Metodologia from './components/Metodologia'
 import PozosTabla from './components/PozosTabla'
 
-type Tab = 'resumen' | 'declinacion' | 'tipo' | 'analisis' | 'mapa' | 'pozos'
+type Tab = 'resumen' | 'declinacion' | 'tipo' | 'analisis' | 'mapa' | 'madurez' | 'pozos' | 'metodologia'
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'resumen', label: 'Resumen' },
@@ -17,7 +19,9 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'tipo', label: 'Pozos tipo' },
   { id: 'analisis', label: 'Análisis' },
   { id: 'mapa', label: 'Mapa' },
+  { id: 'madurez', label: 'Madurez' },
   { id: 'pozos', label: 'Pozos' },
+  { id: 'metodologia', label: 'Metodología' },
 ]
 
 export default function App() {
@@ -70,7 +74,9 @@ export default function App() {
         {tab === 'tipo' && <PozoTipo />}
         {tab === 'analisis' && <Analisis />}
         {tab === 'mapa' && <Mapa />}
+        {tab === 'madurez' && <Madurez />}
         {tab === 'pozos' && <PozosTabla />}
+        {tab === 'metodologia' && <Metodologia />}
       </main>
 
       <footer style={{ color: colors.textDim, fontSize: 11, marginTop: space.xxl, paddingTop: space.lg, borderTop: `1px solid ${colors.border}` }}>
