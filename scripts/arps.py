@@ -142,6 +142,36 @@ def forecast_eur(fit, rate, days, fluid,
     return cum + remaining, remaining, months
 
 
+def cum_at_horizon(fit, rate, days, horizon_months, fluid,
+                   dmin_annual=DMIN_ANNUAL):
+    """Cumulative volume to a fixed horizon (months-on-production), the study's
+    'acumulada a N años' metric. Actual production for the months present; if the
+    well is younger, the remaining months are forecast with the fit (anchored to
+    the median of the last real rates). Returns volume in the rate's units."""
+    rate = np.asarray(rate, dtype=float)
+    days = np.asarray(days, dtype=float)
+    n = rate.size
+    k = min(horizon_months, n)
+    cum = float(np.sum(rate[:k] * days[:k]))
+    if n >= horizon_months or not _fit_usable(fit):
+        return cum
+    nz = np.nonzero(rate > 0)[0]
+    if nz.size == 0:
+        return cum
+    q = float(np.median(rate[nz[-min(3, nz.size):]]))
+    di, b = fit['di'], fit['b']
+    dmin_m = dmin_annual / 12.0
+    t = float(nz[-1] - fit['t_peak'])
+    if t < 0:
+        t = 0.0
+    for _ in range(n, horizon_months):
+        t += 1.0
+        d = max(di / (1.0 + b * di * t) if b >= 1e-4 else di, dmin_m)
+        q = q * np.exp(-d)
+        cum += q * DAYS_PER_MONTH
+    return cum
+
+
 def confidence(fit, n_months):
     """Qualitative EUR confidence for the UI."""
     if not _fit_usable(fit):

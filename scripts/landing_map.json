@@ -1,0 +1,150 @@
+{
+  "fuente": "Instructivo Res 319/93 — Equivalencias y Códigos de Sistemas Estratigráficos",
+  "nota": "Refinable con pases de landing regionales del usuario",
+  "codigos": [
+    {
+      "codigo_unidad": "1",
+      "codigo_detalle": "11",
+      "unidad": "U1",
+      "nivel": "Inferior",
+      "zona": "VM Inferior",
+      "nombre": "Inferior (Cocina/OA)"
+    },
+    {
+      "codigo_unidad": "1",
+      "codigo_detalle": "12",
+      "unidad": "U1",
+      "nivel": "Medio",
+      "zona": "VM Inferior",
+      "nombre": "Inferior (Cocina/OA)"
+    },
+    {
+      "codigo_unidad": "1",
+      "codigo_detalle": "13",
+      "unidad": "U1",
+      "nivel": "Superior",
+      "zona": "VM Inferior",
+      "nombre": "Inferior (Cocina/OA)"
+    },
+    {
+      "codigo_unidad": "2",
+      "codigo_detalle": "21",
+      "unidad": "U2",
+      "nivel": "Inferior",
+      "zona": "VM Medio",
+      "nombre": "Orgánico Inferior (OA)"
+    },
+    {
+      "codigo_unidad": "2",
+      "codigo_detalle": "22",
+      "unidad": "U2",
+      "nivel": "Medio",
+      "zona": "VM Medio",
+      "nombre": "Orgánico Inferior (OA)"
+    },
+    {
+      "codigo_unidad": "2",
+      "codigo_detalle": "23",
+      "unidad": "U2",
+      "nivel": "Superior",
+      "zona": "VM Medio",
+      "nombre": "Orgánico Inferior (OA)"
+    },
+    {
+      "codigo_unidad": "3",
+      "codigo_detalle": "31",
+      "unidad": "U3",
+      "nivel": "Inferior",
+      "zona": "VM Medio",
+      "nombre": "Orgánico Medio (OB)"
+    },
+    {
+      "codigo_unidad": "3",
+      "codigo_detalle": "32",
+      "unidad": "U3",
+      "nivel": "Medio",
+      "zona": "VM Medio",
+      "nombre": "Orgánico Medio (OB)"
+    },
+    {
+      "codigo_unidad": "3",
+      "codigo_detalle": "33",
+      "unidad": "U3",
+      "nivel": "Superior",
+      "zona": "VM Medio",
+      "nombre": "Orgánico Medio (OB)"
+    },
+    {
+      "codigo_unidad": "4",
+      "codigo_detalle": "41",
+      "unidad": "U4",
+      "nivel": "Inferior",
+      "zona": "VM Superior",
+      "nombre": "VM Superior baja"
+    },
+    {
+      "codigo_unidad": "4",
+      "codigo_detalle": "42",
+      "unidad": "U4",
+      "nivel": "Medio",
+      "zona": "VM Superior",
+      "nombre": "VM Superior baja"
+    },
+    {
+      "codigo_unidad": "4",
+      "codigo_detalle": "43",
+      "unidad": "U4",
+      "nivel": "Superior",
+      "zona": "VM Superior",
+      "nombre": "VM Superior baja"
+    },
+    {
+      "codigo_unidad": "5",
+      "codigo_detalle": "51",
+      "unidad": "U5",
+      "nivel": "Inferior",
+      "zona": "VM Superior",
+      "nombre": "VM Superior media"
+    },
+    {
+      "codigo_unidad": "5",
+      "codigo_detalle": "52",
+      "unidad": "U5",
+      "nivel": "Medio",
+      "zona": "VM Superior",
+      "nombre": "VM Superior media"
+    },
+    {
+      "codigo_unidad": "5",
+      "codigo_detalle": "53",
+      "unidad": "U5",
+      "nivel": "Superior",
+      "zona": "VM Superior",
+      "nombre": "VM Superior media"
+    },
+    {
+      "codigo_unidad": "6",
+      "codigo_detalle": "61",
+      "unidad": "U6",
+      "nivel": "Inferior",
+      "zona": "VM Superior",
+      "nombre": "VM Superior alta"
+    },
+    {
+      "codigo_unidad": "6",
+      "codigo_detalle": "62",
+      "unidad": "U6",
+      "nivel": "Medio",
+      "zona": "VM Superior",
+      "nombre": "VM Superior alta"
+    },
+    {
+      "codigo_unidad": "6",
+      "codigo_detalle": "63",
+      "unidad": "U6",
+      "nivel": "Superior",
+      "zona": "VM Superior",
+      "nombre": "VM Superior alta"
+    }
+  ]
+}

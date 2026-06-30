@@ -81,6 +81,49 @@ export interface WellRow {
   eur_oil_por_km: number | null
   vida_oil_meses: number | null
   eur_conf_oil: string | null
+  // completion / landing / trajectory
+  lbs_ft: number | null
+  fluid_bbl_ft: number | null
+  completion_bucket: string | null
+  landing: string | null
+  landing_zona: string | null
+  tvd: number | null
+  // performance metric (cum 5yr normalised to 3000 m)
+  cum5y_gas_bcf: number | null
+  cum5y_gas_norm: number | null
+  cum5y_oil_kbbl: number | null
+  cum5y_oil_norm: number | null
+  // parent/child
+  tipo_pc: string | null
+  parent_id: number | null
+  dist_parent_m: number | null
+  dist_bucket: number | null
+}
+
+export interface WellTag {
+  id: number
+  area: string | null
+  formacion: string | null
+  vintage: number | null
+  ventana: string | null
+  tipo_pc: string | null
+  completion_bucket: string | null
+  landing: string | null
+  dist_bucket: number | null
+  operador: string | null
+  rama: number | null
+}
+
+export interface ParentChildPair {
+  child: number
+  parent: number
+  perp_m: number
+  dist_bucket: number
+  meses_post_pem: number
+  child_bucket: string | null
+  parent_bucket: string | null
+  arena_conjunta: number | null
+  same_landing: boolean
 }
 
 export interface Cohort {

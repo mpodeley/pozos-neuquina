@@ -1,7 +1,19 @@
 import { useEffect, useState } from 'react'
 import type {
-  Activity, BlockRow, Cohort, ConcesionesCollection, Envelope, FetchState, WellRow, WellSeries,
+  Activity, BlockRow, Cohort, ConcesionesCollection, Envelope, FetchState,
+  ParentChildPair, WellRow, WellSeries, WellTag,
 } from '../types'
+
+export interface TrayRow {
+  id: number
+  sigla: string
+  hz: number | null
+  landing: string | null
+  landing_zona: string | null
+  heel: [number, number]
+  toe: [number, number]
+  mid: [number, number]
+}
 
 /**
  * Loads a JSON file from ./data/ and unwraps the {generated_at, data} envelope
@@ -61,6 +73,9 @@ export const useWellSeries = () => useJson<{ wells: WellSeries[] }>('./data/well
 export const useTypeWells = () => useJson<{ cohorts: Cohort[] }>('./data/type_wells.json')
 export const useActivity = () => useJson<Activity>('./data/activity.json')
 export const useBlocks = () => useJson<BlockRow[]>('./data/blocks.json')
+export const useWellTags = () => useJson<WellTag[]>('./data/well_tags.json')
+export const useParentChild = () => useJson<ParentChildPair[]>('./data/parent_child.json')
+export const useTrayectorias = () => useJson<TrayRow[]>('./data/trayectorias.json')
 
 /** Concesiones GeoJSON: a plain FeatureCollection (no pipeline envelope), so
  *  fetch it directly rather than through useJson. */

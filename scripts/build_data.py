@@ -27,8 +27,8 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, '..', 'public', 'data')
 PY = sys.executable
 
-REQUIRED = ['fractura.json', 'well_series.json', 'wells.json',
-            'type_wells.json', 'activity.json', 'blocks.json']
+REQUIRED = ['fractura.json', 'well_series.json', 'trayectorias.json', 'wells.json',
+            'parent_child.json', 'well_tags.json', 'type_wells.json', 'activity.json', 'blocks.json']
 
 
 def run(script, *args, timeout=1200):
@@ -72,7 +72,9 @@ def main():
     if not args.skip_fetch:
         steps_ok &= run('fetch_fractura_adjiv.py')
         steps_ok &= run('fetch_capiv_pozos.py')
+        steps_ok &= run('fetch_trayectorias.py')
     steps_ok &= run('build_wells.py')
+    steps_ok &= run('build_parent_child.py')
     steps_ok &= run('build_type_wells.py')
     steps_ok &= run('build_blocks.py')
 

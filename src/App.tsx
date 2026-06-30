@@ -9,14 +9,18 @@ import Analisis from './components/Analisis'
 import Mapa from './components/Mapa'
 import Madurez from './components/Madurez'
 import Metodologia from './components/Metodologia'
+import Completion from './components/Completion'
+import PozoTipoMulti from './components/PozoTipoMulti'
 import PozosTabla from './components/PozosTabla'
 
-type Tab = 'resumen' | 'declinacion' | 'tipo' | 'analisis' | 'mapa' | 'madurez' | 'pozos' | 'metodologia'
+type Tab = 'resumen' | 'declinacion' | 'tipo' | 'tipomulti' | 'completion' | 'analisis' | 'mapa' | 'madurez' | 'pozos' | 'metodologia'
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'resumen', label: 'Resumen' },
   { id: 'declinacion', label: 'Declinación' },
   { id: 'tipo', label: 'Pozos tipo' },
+  { id: 'tipomulti', label: 'Pozo tipo ✚' },
+  { id: 'completion', label: 'Completion' },
   { id: 'analisis', label: 'Análisis' },
   { id: 'mapa', label: 'Mapa' },
   { id: 'madurez', label: 'Madurez' },
@@ -72,6 +76,8 @@ export default function App() {
         {tab === 'resumen' && <Resumen />}
         {tab === 'declinacion' && <Declinacion />}
         {tab === 'tipo' && <PozoTipo />}
+        {tab === 'tipomulti' && <PozoTipoMulti />}
+        {tab === 'completion' && <Completion />}
         {tab === 'analisis' && <Analisis />}
         {tab === 'mapa' && <Mapa />}
         {tab === 'madurez' && <Madurez />}
