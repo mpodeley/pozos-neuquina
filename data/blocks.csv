@@ -1,12 +1,12 @@
 ﻿bloque,operador,formacion,ventana,n_wells,n_vm,n_gas,n_oil,vintage_min,vintage_max,pozos_ult3a,share_ult3a,anios_activo,rama_mediana,area_km2,well_density,pct_developed,eur_gas_total,eur_oil_total,cum_gas,cum_oil,eur_gas_km2,eur_oil_km2,eur_gas_km_med,eur_oil_km_med,depletion_gas,depletion_oil,depletion_boe,rf_gas_hoy,rf_oil_hoy,rf_gas_vs_ult,rf_oil_vs_ult,maturity_index,stage
 LOMA CAMPANA,YPF S.A.,vaca muerta,petróleo,862,831,134,157,2010,2026,98,0.11,17,2252.5,396.0,2.18,0.726,9014.0,42574.0,8645.0,35541.0,22.8,107.6,6.8,49.9,0.959,0.835,0.856,0.0201,0.0752,0.078,1.269,80.6,Maduro
 EL OREJANO,YPF S.A.,vaca muerta,gas seco,90,90,44,4,2012,2024,1,0.01,15,1613.0,45.0,2.0,0.667,13958.0,38.0,10218.0,37.0,310.2,0.8,90.5,1.0,0.732,0.984,0.733,0.2734,0.0006,1.067,0.01,73.6,Declinación
-LA AMARGA CHICA,YPF S.A.,vaca muerta,petróleo,328,328,106,136,2011,2026,138,0.42,16,2499.5,189.0,1.74,0.579,2619.0,26137.0,2404.0,19886.0,13.9,138.3,3.6,42.2,0.918,0.761,0.775,0.0122,0.0967,0.048,1.631,70.1,Maduro
+LA AMARGA CHICA,YPF S.A.,vaca muerta,petróleo,328,328,106,136,2011,2026,138,0.42,16,2501.0,189.0,1.74,0.579,2619.0,26137.0,2404.0,19886.0,13.9,138.3,3.6,42.2,0.918,0.761,0.775,0.0122,0.0967,0.048,1.631,70.1,Maduro
 CENTENARIO CENTRO,FLXS OGE S.A,los molles,gas seco,130,2,0,0,2010,2018,0,0.0,17,,130.0,1.0,0.334,3865.0,137.0,3592.0,135.0,29.8,1.1,,,0.929,0.99,0.932,0.0262,0.0007,0.102,0.012,61.3,Declinación
 ESTACION FERNANDEZ ORO,QUINTANA E&P ARGENTINA S.R.L.,lajas,gas húmedo / condensado,191,0,0,0,2010,2020,0,0.0,17,,193.0,0.99,0.33,10826.0,2194.0,10076.0,2063.0,56.0,11.4,,,0.931,0.94,0.932,0.0494,0.0079,0.193,0.134,61.1,Declinación
 RINCON DEL MANGRULLO,YPF S.A.,mulichinco,gas seco,192,58,29,23,2013,2026,7,0.04,14,2493.0,180.0,1.07,0.355,22856.0,310.0,18186.0,309.0,126.9,1.7,124.8,0.6,0.796,0.998,0.798,0.1118,0.0012,0.436,0.02,58.5,Declinación
 LOMA LA LATA - SIERRA BARROSA,YPF S.A.,lajas,gas seco,225,12,2,1,2010,2025,3,0.01,17,1976.0,249.0,0.9,0.301,16326.0,197.0,14584.0,182.0,65.5,0.8,62.5,29.3,0.893,0.922,0.894,0.0577,0.0006,0.225,0.009,58.4,Declinación
-BANDURRIA SUR,YPF S.A.,vaca muerta,petróleo,220,219,71,74,2013,2026,118,0.54,14,2721.0,228.0,0.97,0.322,2890.0,16723.0,2459.0,13349.0,12.7,73.4,6.3,40.6,0.851,0.798,0.806,0.0112,0.0513,0.044,0.865,56.9,Desarrollo activo
+BANDURRIA SUR,YPF S.A.,vaca muerta,petróleo,220,219,71,74,2013,2026,118,0.54,14,2728.0,228.0,0.97,0.322,2890.0,16723.0,2459.0,13349.0,12.7,73.4,6.3,40.6,0.851,0.798,0.806,0.0112,0.0513,0.044,0.865,56.9,Desarrollo activo
 LA RIBERA BLOQUE I,YPF S.A.,vaca muerta,gas húmedo / condensado,20,20,7,6,2015,2022,0,0.0,12,2222.5,22.0,0.91,0.304,2302.0,338.0,1921.0,281.0,105.0,15.4,79.7,12.1,0.834,0.83,0.834,0.0926,0.0108,0.361,0.182,56.7,Declinación
 FORTIN DE PIEDRA,TECPETROL S.A.,vaca muerta,gas seco,193,193,92,71,2012,2026,56,0.29,15,2524.0,249.0,0.78,0.259,56114.0,3614.0,41772.0,2764.0,225.8,14.5,153.9,4.6,0.744,0.765,0.746,0.199,0.0102,0.777,0.171,51.6,Desarrollo activo
 EL MANGRULLO,PAMPA ENERGIA S.A.,agrio,gas seco,103,17,1,2,2010,2024,3,0.03,17,2504.0,188.0,0.55,0.182,24728.0,58.0,20395.0,58.0,131.4,0.3,20.7,0.6,0.825,0.992,0.825,0.1158,0.0002,0.452,0.004,49.8,Declinación
@@ -62,7 +62,7 @@ LA ESCALONADA,VACA MUERTA INVERSIONES SAU,vaca muerta,petróleo volátil,8,8,2,2
 AGUADA DE LA ARENA,YPF S.A.,vaca muerta,gas seco,41,41,19,4,2018,2026,10,0.24,9,2108.0,111.0,0.37,0.123,10370.0,145.0,6950.0,129.0,93.1,1.3,164.2,6.2,0.67,0.889,0.673,0.0821,0.0009,0.32,0.015,38.2,Desarrollo activo
 RINCON LA CENIZA,VACA MUERTA INVERSIONES SAU,vaca muerta,petróleo volátil,16,16,3,5,2013,2020,0,0.0,14,1790.0,221.0,0.07,0.024,869.0,761.0,722.0,465.0,3.9,3.4,73.0,73.6,0.831,0.611,0.726,0.0035,0.0024,0.014,0.041,38.1,Declinación
 LOMA JARILLOSA ESTE,GEOPARK ARGENTINA S.A.,vaca muerta,petróleo,9,9,3,4,2012,2024,3,0.33,15,2520.0,25.0,0.37,0.122,22.0,647.0,22.0,344.0,0.9,26.4,1.6,60.7,0.999,0.532,0.547,0.0008,0.0184,0.003,0.311,38.1,Desarrollo temprano
-LA ANGOSTURA SUR I,YPF S.A.,vaca muerta,petróleo,66,64,23,24,2014,2026,61,0.92,13,3534.0,249.0,0.26,0.088,748.0,4153.0,545.0,2405.0,3.0,16.7,3.9,24.5,0.728,0.579,0.601,0.0026,0.0116,0.01,0.196,37.9,Desarrollo activo
+LA ANGOSTURA SUR I,YPF S.A.,vaca muerta,petróleo,66,64,23,24,2014,2026,61,0.92,13,3530.0,249.0,0.26,0.088,748.0,4153.0,545.0,2405.0,3.0,16.7,3.9,24.5,0.728,0.579,0.601,0.0026,0.0116,0.01,0.196,37.9,Desarrollo activo
 PUESTO PARADA,TECPETROL S.A.,vaca muerta,petróleo,20,19,2,4,2010,2026,14,0.7,17,3521.0,159.0,0.13,0.042,48.0,914.0,44.0,616.0,0.3,5.7,1.2,36.0,0.935,0.674,0.686,0.0003,0.004,0.001,0.068,37.9,Desarrollo temprano
 ENTRE LOMAS,TANGO ENERGY ARGENTINA S.A.,punta rosada,gas seco,6,1,0,0,2010,2024,3,0.5,17,,741.0,0.01,0.003,116.0,22.0,84.0,20.0,0.2,0.0,,,0.721,0.909,0.752,0.0001,0.0,0.001,0.0,37.7,Desarrollo temprano
 BAJADA DEL PALO ESTE,VISTA ENERGY ARGENTINA SAU,vaca muerta,petróleo,33,33,5,12,2010,2026,26,0.79,17,2918.5,199.0,0.17,0.055,90.0,2885.0,88.0,1798.0,0.4,14.5,1.0,53.5,0.985,0.623,0.634,0.0004,0.0101,0.002,0.171,37.1,Desarrollo activo
@@ -85,7 +85,7 @@ GOBERNADOR AYALA,PLUSPETROL S.A.,centenario,petróleo,2,0,0,0,2012,2012,0,0.0,15
 CN VII A,YPF S.A.,vaca muerta,gas húmedo / condensado,1,1,1,0,2024,2024,1,1.0,3,1059.0,,,,284.0,24.0,52.0,24.0,,,267.8,,0.183,0.999,0.248,,,,,,Piloto/exploratorio
 PARVA NEGRA ESTE,PAMPA ENERGIA S.A.,vaca muerta,gas seco,2,2,0,0,2017,2025,1,0.5,10,2502.0,,,,164.0,0,122.0,0,,,,,0.747,0.0,0.747,,,,,,Piloto/exploratorio
 ANGOSTURA,PRESIDENT PETROLEUM S.A.,quintuco,gas seco,5,0,0,0,2012,2019,0,0.0,15,,,,,134.0,1.0,122.0,1.0,,,,,0.905,1.0,0.906,,,,,,Declinación
-LAS TACANAS,YPF S.A.,vaca muerta,gas seco,5,4,0,0,2013,2025,2,0.4,14,1492.5,,,,82.0,18.0,82.0,18.0,,,,,1.0,1.0,1.0,,,,,,Desarrollo temprano
+LAS TACANAS II,YPF S.A.,vaca muerta,gas húmedo / condensado,4,3,0,0,2015,2025,2,0.5,12,1492.5,,,,81.0,18.0,81.0,18.0,,,,,1.0,0.998,1.0,,,,,,Piloto/exploratorio
 LOMA RANQUELES,TECPETROL S.A.,vaca muerta,gas seco,2,2,0,0,2017,2019,0,0.0,10,1481.0,,,,34.0,0,33.0,0,,,,,0.999,0.0,0.999,,,,,,Piloto/exploratorio
 LOMA ANCHA,TECPETROL S.A.,vaca muerta,gas seco,2,2,0,0,2018,2022,0,0.0,9,1517.0,,,,18.0,0,18.0,0,,,,,1.0,0.0,1.0,,,,,,Piloto/exploratorio
 BAJO DEL TORO,YPF S.A.,vaca muerta,petróleo,1,1,0,0,2025,2025,1,1.0,2,2763.0,,,,5.0,32.0,5.0,32.0,,,,,0.99,1.0,0.999,,,,,,Piloto/exploratorio
@@ -95,6 +95,7 @@ LOMA DEL MOLLE,YPF S.A.,vaca muerta,gas seco,2,2,0,0,2012,2016,0,0.0,15,,,,,6.0,
 CERRO ARENA,YPF S.A.,vaca muerta,gas seco,3,2,0,0,2013,2016,0,0.0,14,,,,,6.0,0,6.0,0,,,,,0.995,0.0,0.995,,,,,,Piloto/exploratorio
 PAMPA DE LAS YEGUAS II,TOTAL AUSTRAL S.A.,vaca muerta,petróleo volátil,1,1,0,0,2013,2013,0,0.0,14,,,,,1.0,1.0,1.0,1.0,,,,,0.99,0.986,0.988,,,,,,Piloto/exploratorio
 PARVA NEGRA OESTE,CAPEX S.A.,vaca muerta,gas seco,2,2,0,0,2022,2023,0,0.0,5,,,,,1.0,0,1.0,0,,,,,1.0,0.0,1.0,,,,,,Piloto/exploratorio
+LAS TACANAS I,YPF S.A.,vaca muerta,gas seco,1,1,0,0,2013,2013,0,0.0,14,,,,,1.0,0,1.0,0.0,,,,,1.0,0.0,1.0,,,,,,Piloto/exploratorio
 CORRALERA NORESTE,PHOENIX GLOBAL RESOURCES S.A.,vaca muerta,gas seco,2,2,0,0,2012,2021,0,0.0,15,,,,,1.0,0.0,1.0,0.0,,,,,1.0,1.0,1.0,,,,,,Piloto/exploratorio
 AGUILA MORA NORESTE,VISTA ENERGY ARGENTINA SAU,vaca muerta,petróleo volátil,1,1,0,0,2013,2013,0,0.0,14,,,,,0.0,1.0,0.0,1.0,,,,,1.0,1.0,1.0,,,,,,Piloto/exploratorio
 CERRO PARTIDO,YPF S.A.,vaca muerta,petróleo volátil,1,1,0,0,2014,2014,0,0.0,13,,,,,0.0,0.0,0.0,0.0,,,,,1.0,1.0,1.0,,,,,,Piloto/exploratorio
